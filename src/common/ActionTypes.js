@@ -1,2 +1,9 @@
 export const SEND_ACTION = "SEND_ACTION";
 export const SET_STATE = "SET_STATE";
+export const VALUE_CHANGE = "VALUE_CHANGE";
+export const VALUE_SHIFT = "VALUE_SHIFT";
+export const VALUE_SET = "VALUE_SET";
+export const CURSOR_VALUE_CHANGE = "CURSOR_VALUE_CHANGE";
+export const CURSOR_VALUE_SET = "CURSOR_VALUE_SET";
+export const TEMPLATE_VALUE_CHANGE = "TEMPLATE_VALUE_CHANGE";
+export const SELECT_KNOB = "SELECT_KNOB";

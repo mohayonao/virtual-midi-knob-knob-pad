@@ -17,3 +17,7 @@ export function diff(a, b) {
 
   return result;
 }
+
+export function linlin(value, inMin, inMax, outMin, outMax) {
+  return (value - inMin) / (inMax - inMin) * (outMax - outMin) + outMin;
+}

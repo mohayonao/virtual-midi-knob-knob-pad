@@ -2,12 +2,16 @@ import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import ColorDefs from "../components/ColorDefs";
 import Panel from "../components/Panel";
+import LConMatrix from "../components/LConMatrix";
+import LConCursor from "../components/LConCursor";
+import LConTemplate from "../components/LConTemplate";
+import KnobFocus from "../components/KnobFocus";
 import { WIDTH, HEIGHT } from "../designer";
 import { keyDown, keyUp } from "./KeyHandler";
 
 class App extends Component {
   static propTypes = {
-    actions : PropTypes.objectOf(PropTypes.func).isRequired,
+    actions: PropTypes.objectOf(PropTypes.func).isRequired,
   };
 
   constructor(...args) {
@@ -20,6 +24,9 @@ class App extends Component {
     this.onTouchEnd = ::this.onTouchEnd;
     this.onKeyDown = ::this.onKeyDown;
     this.onKeyUp = ::this.onKeyUp;
+    this.onValueChange = ::this.onValueChange;
+    this.onCursorValueChange = ::this.onCursorValueChange;
+    this.onTemplateValueChange = ::this.onTemplateValueChange;
   }
 
   componentDidMount() {
@@ -58,6 +65,18 @@ class App extends Component {
     keyUp(e.keyCode, this.props);
   }
 
+  onValueChange(row, col, value) {
+    this.props.actions.valueChange(row, col, value);
+  }
+
+  onCursorValueChange(index, value) {
+    this.props.actions.cusorValueChange(index, value);
+  }
+
+  onTemplateValueChange(value) {
+    this.props.actions.templateValueChange(value);
+  }
+
   render() {
     const width  = window.innerWidth;
     const height = window.innerHeight;
@@ -79,6 +98,10 @@ class App extends Component {
       <svg className="app" style={ style } viewBox={ `0 0 ${ WIDTH } ${ HEIGHT }` }>
         <ColorDefs />
         <Panel />
+        <LConMatrix { ...this.props } onValueChange={ this.onValueChange }/>
+        <LConCursor { ...this.props } onValueChange={ this.onCursorValueChange }/>
+        <LConTemplate { ...this.props } onValueChange={ this.onTemplateValueChange }/>
+        <KnobFocus { ...this.props }/>
       </svg>
     );
   }
