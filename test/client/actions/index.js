@@ -10,4 +10,11 @@ describe("actions", () => {
 
     assert.deepEqual(actual, expected);
   });
+
+  it("applyPatch should create APPLY_PATCH", () => {
+    const actual = actionCreators.applyPatch([ { op: "add" } ]);
+    const expected = { type: types.APPLY_PATCH, patch: [ { op: "add" } ] };
+
+    assert.deepEqual(actual, expected);
+  });
 });
