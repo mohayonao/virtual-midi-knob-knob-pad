@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { createStore, applyMiddleware, bindActionCreators } from "redux";
 import { Provider } from "react-redux";
 import isElectron from "is-electron";
-import inject from "../common/middlewares/inject";
+import inject from "../common/middleware/inject";
 import App from "./containers/App";
 import reducer from "./reducer";
 import * as actionCreators from "./actions";
