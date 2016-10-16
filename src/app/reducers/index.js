@@ -18,10 +18,16 @@ const custom = {
 export default (state = initState, action) => {
   switch (action.type) {
   case types.VALUE_SET:
+    return patch(state, [
+      { op: "replace", path: `/data/${ action.row }/${ action.col }`, value: clamp(action.value, 0, 127) },
+    ]);
   case types.VALUE_CHANGE:
-  return patch(state, [
-    { op: "replace", path: `/data/${ action.row }/${ action.col }`, value: clamp(action.value, 0, 127) },
-  ]);
+    if (0 <= action.row && action.row <= 1) {
+      return patch(state, [
+        { op: "replace", path: `/data/${ action.row }/${ action.col }`, value: clamp(action.value, 0, 127) },
+      ]);
+    }
+    break;
   case types.VALUE_SHIFT:
     return patch(state, [
       { op: "@increment", path: `/data/${ action.row }/${ action.col }`, value: action.shift },
