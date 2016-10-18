@@ -34,7 +34,7 @@
     "clone": "^2.0.0",
     "electron": "^1.4.3",
     "electron-packager": "^8.1.0",
-    "electron-prebuilt": "^1.4.2",
+    "electron-rebuild": "^1.2.1",
     "enzyme": "^2.4.1",
     "eslint": "^3.7.1",
     "eslint-plugin-react": "^6.3.0",
