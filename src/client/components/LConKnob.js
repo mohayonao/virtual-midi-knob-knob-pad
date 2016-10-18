@@ -111,7 +111,7 @@ export default class LConKnob extends Component {
     const color = this.state.focus ? "#b5b1a2" : "#77756b";
 
     return (
-      <g className="lpad-knob">
+      <g className="lcon-knob">
         <path stroke={ color } fill="transparent" strokeWidth={ 10 } d={ d0 }/>
         <path stroke="#f7f7f6" fill="transparent" strokeWidth={ 5 } d={ d1 }/>
         <rect x={ x } y={ y } width={ width } height={ height } fill="transparent" { ...this._events }/>

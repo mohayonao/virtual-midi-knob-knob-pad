@@ -51,7 +51,7 @@ export default class LConPad extends Component {
 
   render() {
     return (
-      <g className="lpad-pad" { ...this._events }>
+      <g className="lcon-pad" { ...this._events }>
         { this.renderChild() }
       </g>
     );

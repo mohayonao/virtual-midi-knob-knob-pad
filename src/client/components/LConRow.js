@@ -27,6 +27,6 @@ export default class LConRow extends Component {
       );
     });
 
-    return (<g>{ elems }</g>);
+    return (<g className="lcon-row">{ elems }</g>);
   }
 }
