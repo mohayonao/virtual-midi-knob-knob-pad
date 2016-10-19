@@ -12,8 +12,8 @@ export function valueChange(row, col, value) {
   return { type: types.VALUE_CHANGE, row, col, value };
 }
 
-export function valueShift(row, col, shift) {
-  return { type: types.VALUE_SHIFT, row, col, shift };
+export function valueShift(row, col, value) {
+  return { type: types.VALUE_SHIFT, row, col, value };
 }
 
 export function cusorValueChange(index, value) {

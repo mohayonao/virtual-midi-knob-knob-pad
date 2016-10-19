@@ -11,7 +11,7 @@ const custom = {
       return "error";
     }
 
-    return api.replace(patch.path, clamp(value + patch.value, 0, 127));
+    return api.replace(patch.path, velocity(value + patch.value));
   }
 }
 
@@ -19,22 +19,22 @@ export default (state = initState, action) => {
   switch (action.type) {
   case types.VALUE_SET:
     return patch(state, [
-      { op: "replace", path: `/data/${ action.row }/${ action.col }`, value: clamp(action.value, 0, 127) },
+      { op: "replace", path: `/data/${ action.row }/${ action.col }`, value: velocity(action.value) },
     ]);
   case types.VALUE_CHANGE:
-    if (0 <= action.row && action.row <= 1) {
+    if (isKnob(action.row)) {
       return patch(state, [
-        { op: "replace", path: `/data/${ action.row }/${ action.col }`, value: clamp(action.value, 0, 127) },
+        { op: "replace", path: `/data/${ action.row }/${ action.col }`, value: velocity(action.value) },
       ]);
     }
     break;
   case types.VALUE_SHIFT:
     return patch(state, [
-      { op: "@increment", path: `/data/${ action.row }/${ action.col }`, value: action.shift },
+      { op: "@increment", path: `/data/${ action.row }/${ action.col }`, value: action.value },
     ], { custom });
   case types.CURSOR_VALUE_SET:
     return patch(state, [
-      { op: "replace", path: `/cursor/${ action.index }`, value: action.value },
+      { op: "replace", path: `/cursor/${ action.index }`, value: velocity(action.value) },
     ]);
   case types.TEMPLATE_VALUE_CHANGE:
     return patch(state, [
@@ -44,3 +44,11 @@ export default (state = initState, action) => {
 
   return state;
 };
+
+export function velocity(value) {
+  return clamp(value, 0, 127);
+}
+
+export function isKnob(row) {
+  return row === 0 || row === 1;
+}
