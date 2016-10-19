@@ -1,14 +1,14 @@
-# Virtual Launch Control
+# Virtual MIDI Knob Knob Pad
 
-Electron-based [Novation LaunchControl](https://us.novationmusic.com/launch/launch-control) Simulator
+Electron-based Virtual MIDI Controller that like [Novation Launch Control](https://us.novationmusic.com/launch/launch-control)
 
 ![screen shot](./assets/screenshot.png)
 
 ## Installation
 
 ```
-$ git clone https://github.com/mohayonao/virtual-launch-control.git
-$ cd virtual-launch-control
+$ git clone https://github.com/mohayonao/virtual-midi-knob-knob-pad.git
+$ cd virtual-midi-knob-knob-pad
 $ npm install
 ```
 
