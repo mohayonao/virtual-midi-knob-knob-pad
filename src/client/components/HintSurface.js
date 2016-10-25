@@ -21,7 +21,8 @@ export default class HintSurface extends Component {
   }
 }
 
-export class KnobHintSurface extends VolatileSurface {
+@VolatileSurface(1000)
+export class KnobHintSurface extends Component {
   static propTypes = {
     row: PropTypes.number.isRequired,
     col: PropTypes.number.isRequired,
@@ -32,7 +33,7 @@ export class KnobHintSurface extends VolatileSurface {
     return nextProps.row !== this.props.row;
   }
 
-  renderChild() {
+  render() {
     const { row, col } = this.props;
 
     if (row === -1) {
@@ -46,6 +47,6 @@ export class KnobHintSurface extends VolatileSurface {
     const width  = KnobHintSurface.size;
     const height = KnobHintSurface.size;
 
-    return (<rect x={ x } y={ y } width={ width } height={ height } fill="transparent" stroke="#b5a2a2"/>)
+    return (<rect x={ x } y={ y } width={ width } height={ height } fill="transparent" stroke="#b5a2a2"/>);
   }
 }
