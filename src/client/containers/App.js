@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import LEDColorDefs from "../components/ui/LEDColorDefs";
-import Panel from "../components/Panel";
+import FrontPanel from "../components/FrontPanel";
 import LConMatrix from "../components/LConMatrix";
 import LConCursor from "../components/LConCursor";
 import LConTemplate from "../components/LConTemplate";
@@ -97,7 +97,7 @@ class App extends Component {
     return (
       <svg className="app" style={ style } viewBox={ `0 0 ${ WIDTH } ${ HEIGHT }` }>
         <LEDColorDefs colors={ LEDColorMap }/>
-        <Panel />
+        <FrontPanel />
         <LConMatrix { ...this.props } onValueChange={ this.onValueChange }/>
         <LConCursor { ...this.props } onValueChange={ this.onCursorValueChange }/>
         <LConTemplate { ...this.props } onValueChange={ this.onTemplateValueChange }/>
