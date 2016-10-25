@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import { LConPadMini } from "./LConPad";
+import LConPadMini from "./LConPadMini";
 import { TemplateLayout } from "../designer";
 
 export default class LConTemplate extends Component {
@@ -17,10 +17,10 @@ export default class LConTemplate extends Component {
     const elems = [ 0, 1 ].map((index) => {
       const [ cx, cy ] = TemplateLayout[index];
       const onValueChange = this.props.onValueChange.bind(null, index);
-      const color = template === index ? 3 : 0;
+      const data = template === index ? 3 : 0;
 
       return (
-        <LConPadMini key={ index } cx={ cx } cy={ cy } data={ color } onValueChange={ onValueChange }/>
+        <LConPadMini key={ index } cx={ cx } cy={ cy } data={ data } onValueChange={ onValueChange }/>
       );
     });
 

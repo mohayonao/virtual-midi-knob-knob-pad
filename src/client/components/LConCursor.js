@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import { LConPadMini } from "./LConPad";
+import LConPadMini from "./LConPadMini";
 import { CursorLayout } from "../designer";
 
 export default class LConCursor extends Component {
@@ -17,10 +17,11 @@ export default class LConCursor extends Component {
     const elems = cursor.map((data, index) => {
       const [ cx, cy ] = CursorLayout[index];
       const onValueChange = this.props.onValueChange.bind(null, index);
-      const color = data & 0x03;
+
+      data = data & 0x03;
 
       return (
-        <LConPadMini key={ index } cx={ cx } cy={ cy } data={ color } onValueChange={ onValueChange }/>
+        <LConPadMini key={ index } cx={ cx } cy={ cy } data={ data } onValueChange={ onValueChange }/>
       );
     });
 

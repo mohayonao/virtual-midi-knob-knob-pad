@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import LConKnob from "./LConKnob";
-import { LConPadRect } from "./LConPad";
+import LConPadRect from "./LConPadRect";
 import { toCX, toCY } from "../designer";
 
 export default class LConRow extends Component {
@@ -22,8 +22,12 @@ export default class LConRow extends Component {
       const onValueChange = this.props.onValueChange.bind(null, col);
       const LConCol = row === 2 ? LConPadRect : LConKnob;
 
+      if (row === 2) {
+        colData = ((colData & 0x30) >> 2) + (colData & 0x03);
+      }
+
       return (
-        <LConCol key={ col } cx={ cx } cy={ cy } data={ colData} onValueChange={ onValueChange }/>
+        <LConCol key={ col } cx={ cx } cy={ cy } data={ colData } onValueChange={ onValueChange }/>
       );
     });
 
