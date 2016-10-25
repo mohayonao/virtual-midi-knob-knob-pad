@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import VolatileSurface from "./ui/VolatileSurface";
+import Volatile from "./ui/Volatile";
 import { toCX, toCY } from "../designer";
 
 export default class HintSurface extends Component {
@@ -21,7 +21,7 @@ export default class HintSurface extends Component {
   }
 }
 
-@VolatileSurface(1000)
+@Volatile({ timeout: 1000 })
 export class KnobHintSurface extends Component {
   static propTypes = {
     row: PropTypes.number.isRequired,
