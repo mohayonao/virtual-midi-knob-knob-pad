@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { toCY } from "../designer";
 
-const FomrParams = {
+const FontParams = {
   fill: "#b5b5b5",
   textAnchor: "middle",
   dominantBaseline: "middle",
@@ -21,8 +21,8 @@ export default class Panel extends Component {
   render() {
     const elems = [
       <rect key={ 0 } x={ 860 } y={ 90 } width={ 130 } height={ 60 } rx={ 10 } ry={ 10 } fill="#757575"/>,
-      <text key={ 1 } x={ 890 } y={ toCY(0) + 48 } { ...FomrParams }>User</text>,
-      <text key={ 2 } x={ 960 } y={ toCY(0) + 48 } { ...FomrParams }>Factory</text>,
+      <text key={ 1 } x={ 890 } y={ toCY(0) + 48 } { ...FontParams }>User</text>,
+      <text key={ 2 } x={ 960 } y={ toCY(0) + 48 } { ...FontParams }>Factory</text>,
       <path key={ 3 } d="M878,236 L890,222 L902,236" { ...StrokeParams }/>,
       <path key={ 4 } d="M948,222 L960,236 L972,222" { ...StrokeParams }/>,
       <path key={ 5 } d="M897,344 L883,356 L897,368" { ...StrokeParams }/>,
