@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import LEDColorDefs from "../components/ui/LEDColorDefs";
 import FrontPanel from "../components/FrontPanel";
+import HintSurface from "../components/HintSurface";
 import LConMatrix from "../components/LConMatrix";
 import LConCursor from "../components/LConCursor";
 import LConTemplate from "../components/LConTemplate";
-import KnobFocus from "../components/KnobFocus";
 import { WIDTH, HEIGHT, LEDColorMap } from "../designer";
 import { keyDown, keyUp } from "./KeyHandler";
 
@@ -101,7 +101,7 @@ class App extends Component {
         <LConMatrix { ...this.props } onValueChange={ this.onValueChange }/>
         <LConCursor { ...this.props } onValueChange={ this.onCursorValueChange }/>
         <LConTemplate { ...this.props } onValueChange={ this.onTemplateValueChange }/>
-        <KnobFocus { ...this.props }/>
+        <HintSurface { ...this.props }/>
       </svg>
     );
   }

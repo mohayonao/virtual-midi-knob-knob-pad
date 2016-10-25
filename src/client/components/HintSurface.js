@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 import VolatileSurface from "./ui/VolatileSurface";
 import { toCX, toCY } from "../designer";
 
-export default class KnobFocus extends Component {
+export default class HintSurface extends Component {
   static propTypes = {
     knob: PropTypes.arrayOf(PropTypes.number).isRequired,
   };
@@ -14,14 +14,14 @@ export default class KnobFocus extends Component {
   render() {
     const { knob } = this.props;
     const elems = knob.map((row, col) => {
-      return (<KnobFocusItem key={ col } row={ row } col={ col }/>);
+      return (<KnobHintSurface key={ col } row={ row } col={ col }/>);
     });
 
     return (<g>{ elems }</g>);
   }
 }
 
-export class KnobFocusItem extends VolatileSurface {
+export class KnobHintSurface extends VolatileSurface {
   static propTypes = {
     row: PropTypes.number.isRequired,
     col: PropTypes.number.isRequired,
@@ -41,10 +41,10 @@ export class KnobFocusItem extends VolatileSurface {
 
     const cx = toCX(col);
     const cy = toCY(row);
-    const x = cx - (KnobFocusItem.size / 2);
-    const y = cy - (KnobFocusItem.size / 2);
-    const width  = KnobFocusItem.size;
-    const height = KnobFocusItem.size;
+    const x = cx - (KnobHintSurface.size / 2);
+    const y = cy - (KnobHintSurface.size / 2);
+    const width  = KnobHintSurface.size;
+    const height = KnobHintSurface.size;
 
     return (<rect x={ x } y={ y } width={ width } height={ height } fill="transparent" stroke="#b5a2a2"/>)
   }
