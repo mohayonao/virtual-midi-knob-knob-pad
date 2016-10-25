@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from "react";
+import VolatileSurface from "./ui/VolatileSurface";
 import { toCX, toCY } from "../designer";
 
 export default class KnobFocus extends Component {
@@ -20,50 +21,30 @@ export default class KnobFocus extends Component {
   }
 }
 
-export class KnobFocusItem extends Component {
+export class KnobFocusItem extends VolatileSurface {
   static propTypes = {
     row: PropTypes.number.isRequired,
     col: PropTypes.number.isRequired,
   };
-  static Size = 84;
+  static size = 84;
 
-  constructor(...args) {
-    super(...args);
-
-    this.state = { visible: false };
-    this._timerId = 0;
+  shouldComponentUpdate(nextProps) {
+    return nextProps.row !== this.props.row;
   }
 
-  componentWillReceiveProps(nextProp) {
-    if (nextProp.row !== this.props.row) {
-      this.setState({ visible: true });
-      clearTimeout(this._timerId);
-      this._timerId = setTimeout(() => {
-        this.setState({ visible: false });
-      }, 1000);
-    }
-  }
-
-  shouldComponentUpdate(nextProp, nextState) {
-    return (
-      nextProp.row !== this.props.row ||
-      nextState.visible !== this.state.visible
-    );
-  }
-
-  render() {
+  renderChild() {
     const { row, col } = this.props;
 
-    if (row === -1 || !this.state.visible) {
+    if (row === -1) {
       return null;
     }
 
     const cx = toCX(col);
     const cy = toCY(row);
-    const x = cx - (KnobFocusItem.Size / 2);
-    const y = cy - (KnobFocusItem.Size / 2);
-    const width  = KnobFocusItem.Size;
-    const height = KnobFocusItem.Size;
+    const x = cx - (KnobFocusItem.size / 2);
+    const y = cy - (KnobFocusItem.size / 2);
+    const width  = KnobFocusItem.size;
+    const height = KnobFocusItem.size;
 
     return (<rect x={ x } y={ y } width={ width } height={ height } fill="transparent" stroke="#b5a2a2"/>)
   }
